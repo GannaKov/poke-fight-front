@@ -9,11 +9,11 @@ import PokemonInfoPage from "./pages/PokemonInfoPage/PokemonInfoPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import HomePage from "./pages/HomePage/HomePage";
 
-// import {
-//   getAllPokemonsLoder,
-//   getPokemonInfoByTypeLoader,
-//   getSinglePokemonLoader,
-// } from "./services/requests";
+import {
+  getAllPokemonsLoder,
+  getPokemonInfoByTypeLoader,
+  getSinglePokemonLoader,
+} from "./services/requests";
 
 const router = createBrowserRouter([
   {
@@ -39,17 +39,17 @@ const router = createBrowserRouter([
               {
                 index: true,
                 element: <AllPokemonsPage />,
-                // loader: getLimitedAnimalsLoader,
+                loader: getAllPokemonsLoder,
               },
               {
                 path: "/pokemon/:id",
                 element: <SinglePokemonPage />,
-                // loader: getByTypeLoader,
+                loader: getSinglePokemonLoader,
               },
               {
                 path: "/pokemon/:id/:info",
                 element: <PokemonInfoPage />,
-                // loader: getSinglePetLoader,
+                loader: getPokemonInfoByTypeLoader,
               },
             ],
           },

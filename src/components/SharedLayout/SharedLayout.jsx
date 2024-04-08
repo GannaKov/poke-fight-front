@@ -24,7 +24,7 @@ const BlogSharedLayout = () => {
             <li className={styles.navItem}>
               <NavLink
                 end
-                to="/pokemons"
+                to="/pokemon"
                 className={({ isActive }) =>
                   isActive
                     ? `${styles.active} ${styles.headerNavLink}`
