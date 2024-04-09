@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLoaderData, Link } from "react-router-dom";
 import { getRandomNumbers } from "../../services/helpers";
+import { gameResultFunction } from "../../services/helpers";
 import styles from "./HomePage.module.css";
 const HomePage = () => {
   const allPokemonArr = useLoaderData();
 
   const [isPlay, setIsPlay] = useState(0);
-  const [pokemonsForPlay, setPokemonsForPlay] = useState(null);
+
   const [pokemonsForGame, setPokemonsForGame] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
   const [isStart, setIsStart] = useState(false);
+  const [gameResult, setGameResult] = useState(null);
 
   useEffect(() => {
     let timer;
@@ -17,7 +19,7 @@ const HomePage = () => {
       setShowMessage(true);
       timer = setTimeout(() => {
         setShowMessage(false);
-      }, 3000);
+      }, 2000);
     }
 
     return () => {
@@ -40,6 +42,13 @@ const HomePage = () => {
   };
   const handleStartBtn = () => {
     setIsStart(true);
+
+    const result = gameResultFunction(pokemonsForGame[0], pokemonsForGame[1]);
+
+    setGameResult(result);
+  };
+  const handlePlayAgainBtn = () => {
+    setIsPlay(1);
   };
   return (
     <div className={styles.pageInnWrp}>
@@ -74,7 +83,7 @@ const HomePage = () => {
           <p>Wait for your pokemon</p>
         </div>
       )}
-      {pokemonsForPlay && !showMessage && !isStart && (
+      {pokemonsForGame && !showMessage && !isStart && (
         <div>
           <div className={styles.gameWrp}>
             <div>
@@ -104,25 +113,25 @@ const HomePage = () => {
         </div>
       )}
 
-      {pokemonsForPlay && !showMessage && isStart && (
+      {pokemonsForGame && !showMessage && isStart && (
         <div>
           <div className={styles.gameWrp}>
             <div>
               <img
                 className={styles.imgPokemonInGame}
-                src={allPokemonArr[pokemonsForPlay[0]].img}
-                alt={allPokemonArr[pokemonsForPlay[0]].name.english}
+                src={pokemonsForGame[0].img}
+                alt={pokemonsForGame[0].name.english}
               />
             </div>
             <div className={styles.gameBlockMiddle}>
               <div>
                 <p>
                   &larr;&nbsp;You Pokemon&nbsp;
-                  {allPokemonArr[pokemonsForPlay[0]].name.english}
+                  {pokemonsForGame[0].name.english}
                 </p>
                 <p>
                   My Pokemon&nbsp;
-                  {allPokemonArr[pokemonsForPlay[1]].name.english}
+                  {pokemonsForGame[1].name.english}
                   &nbsp;&rarr;
                 </p>
               </div>
@@ -130,13 +139,31 @@ const HomePage = () => {
             <div>
               <img
                 className={styles.imgPokemonInGame}
-                src={allPokemonArr[pokemonsForPlay[1]].img}
-                alt={allPokemonArr[pokemonsForPlay[1]].name.english}
+                src={pokemonsForGame[1].img}
+                alt={pokemonsForGame[1].name.english}
               />
             </div>
           </div>
           <div>
-            <p>Wait, they are fighting ...</p>
+            {!gameResult ? (
+              <p>Wait, they are fighting ...</p>
+            ) : (
+              <div>
+                <p>
+                  Winner:&nbsp;{pokemonsForGame[gameResult.winner].name.english}
+                </p>
+                <p>Score:</p>
+                <p>
+                  Pokemon&nbsp;{pokemonsForGame[0].name.english}:&nbsp;
+                  {gameResult.scoreFirst}&nbsp;:&nbsp;Pokemon&nbsp;
+                  {pokemonsForGame[1].name.english}:&nbsp;
+                  {gameResult.scoreSecond}
+                </p>
+                <button type="button" onClick={handlePlayAgainBtn}>
+                  Play Again
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}
