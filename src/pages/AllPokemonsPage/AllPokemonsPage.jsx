@@ -1,4 +1,4 @@
-import { useNavigate, useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import styles from "./AllPokemonsPage.module.css";
 
 const AllPokemonsPage = () => {

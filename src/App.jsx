@@ -28,7 +28,7 @@ const router = createBrowserRouter([
           {
             index: true,
             Component: HomePage,
-            // loader: getCategoriesLoder,
+            loader: getAllPokemonsLoder,
           },
           {
             path: "/pokemon",

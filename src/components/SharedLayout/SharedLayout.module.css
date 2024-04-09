@@ -78,3 +78,8 @@
   text-decoration: underline;
   text-decoration-thickness: 0.2rem;
 }
+
+.pageWrp {
+  display: flex;
+  justify-content: center;
+}
