@@ -12,11 +12,15 @@ const HomePage = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [gameResult, setGameResult] = useState(null);
+  const [playAgain, setPlayAgain] = useState(false);
 
   useEffect(() => {
     let timer;
     if (isPlay === 1) {
       setShowMessage(true);
+      const randomNumbers = getRandomNumbers(allPokemonArr.length);
+
+      setPokemonsForGame(randomNumbers.map((index) => allPokemonArr[index]));
       timer = setTimeout(() => {
         setShowMessage(false);
       }, 2000);
@@ -25,19 +29,18 @@ const HomePage = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [isPlay]);
+  }, [allPokemonArr, isPlay, playAgain]);
 
   const handlePlayChoiceClick = (e) => {
-    console.log(e.target.name);
     const { name } = e.target;
 
     if (name === "later") {
       setIsPlay(2);
     } else {
       setIsPlay(1);
-      const randomNumbers = getRandomNumbers(allPokemonArr.length);
-      //setPokemonsForPlay(randomNumbers);
-      setPokemonsForGame(randomNumbers.map((index) => allPokemonArr[index]));
+      // const randomNumbers = getRandomNumbers(allPokemonArr.length);
+
+      // setPokemonsForGame(randomNumbers.map((index) => allPokemonArr[index]));
     }
   };
   const handleStartBtn = () => {
@@ -48,7 +51,9 @@ const HomePage = () => {
     setGameResult(result);
   };
   const handlePlayAgainBtn = () => {
-    setIsPlay(1);
+    console.log(playAgain);
+    setIsStart(false);
+    setPlayAgain((prev) => !prev);
   };
   return (
     <div className={styles.pageInnWrp}>
@@ -60,7 +65,7 @@ const HomePage = () => {
         />
       </div>
 
-      {isPlay !== 1 && (
+      {isPlay === 0 && (
         <>
           <p>Hi, my name is Pikachu</p>
           <p>Do you want to play?</p>
