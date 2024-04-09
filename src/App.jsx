@@ -58,6 +58,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "*", Component: SharedLayout },
 ]);
 
 const App = () => {

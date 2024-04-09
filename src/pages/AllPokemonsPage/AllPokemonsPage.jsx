@@ -6,16 +6,16 @@ const AllPokemonsPage = () => {
   return (
     <ul>
       {allPokemonArr.map((pok) => (
-        <Link key={pok._id} to={`/pokemon/${pok._id}`}>
-          <li>
+        <li key={pok._id}>
+          <Link to={`/pokemon/${pok._id}`} state="/pokemon">
             <h2>{pok.name.english}</h2>
             <img
               src={pok.img}
               alt={pok.name.english}
               className={styles.pokemonImg}
             />
-          </li>
-        </Link>
+          </Link>
+        </li>
       ))}
     </ul>
   );

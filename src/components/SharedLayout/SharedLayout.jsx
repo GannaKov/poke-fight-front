@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 import styles from "./SharedLayout.module.css";
 
-const BlogSharedLayout = () => {
+const SharedLayout = () => {
   return (
     <div className={styles.wrapper}>
       <header className={styles.headerWrp}>
@@ -43,4 +43,4 @@ const BlogSharedLayout = () => {
   );
 };
 
-export default BlogSharedLayout;
+export default SharedLayout;
