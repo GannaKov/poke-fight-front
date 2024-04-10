@@ -1,3 +1,12 @@
+.pageInnWrp {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 2rem 1rem;
+}
+.oneChunkWrp {
+  margin-bottom: 1.5rem;
+}
 .pokemonImg {
   width: 150px;
 }

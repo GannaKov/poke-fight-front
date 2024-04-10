@@ -1,4 +1,4 @@
-import { useNavigate, useLoaderData, useLocation } from "react-router-dom";
+import { useLoaderData, useLocation } from "react-router-dom";
 import styles from "../SinglePokemonPage/SinglePokemonPage.module.css";
 import ChunkObj from "../../components/ChunkInfo/ChunkObj";
 import ChunkArr from "../../components/ChunkInfo/ChunkArr";
@@ -11,7 +11,7 @@ const SinglePokemonPage = () => {
   const backLinkHref = location.state ?? "/pokemon";
 
   return (
-    <div>
+    <div className={styles.pageInnWrp}>
       <GoBack state={backLinkHref} />
       <DropDown id={singlePokemon._id} />
       <img
@@ -19,9 +19,18 @@ const SinglePokemonPage = () => {
         alt={singlePokemon.name.english}
         className={styles.pokemonImg}
       />
-      <ChunkObj obj={singlePokemon} typeInfo="name" />
-      <ChunkObj obj={singlePokemon} typeInfo="base" />
-      <ChunkArr obj={singlePokemon} typeInfo="type" />
+      <div className={styles.oneChunkWrp}>
+        <ChunkObj obj={singlePokemon} typeInfo="name" />
+      </div>
+
+      <div className={styles.oneChunkWrp}>
+        {" "}
+        <ChunkObj obj={singlePokemon} typeInfo="base" />
+      </div>
+
+      <div className={styles.oneChunkWrp}>
+        <ChunkArr arr={singlePokemon} typeInfo="type" />
+      </div>
     </div>
   );
 };

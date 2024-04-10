@@ -1,11 +1,15 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import styles from "./GoBack.module.css";
 
 const GoBack = ({ state }) => {
   return (
-    <button type="button">
-      <Link to={state}>&larr;&nbsp;Go Back</Link>
-    </button>
+    <Link className={styles.goBackLink} to={state}>
+      {" "}
+      <button type="button" className={styles.goBackBtn}>
+        &larr;&nbsp;Go Back
+      </button>{" "}
+    </Link>
   );
 };
 
