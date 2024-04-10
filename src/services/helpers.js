@@ -58,6 +58,6 @@ export function gameResultFunction(pokFirst, pokSecond) {
   }
   const winner = scoreFirst > scoreSecond ? 0 : 1;
   const result = { scoreFirst, scoreSecond, winner };
-  console.log(result);
+
   return result;
 }

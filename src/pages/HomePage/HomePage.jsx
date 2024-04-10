@@ -19,17 +19,42 @@ const HomePage = () => {
     if (isPlay === 1) {
       setShowMessage(true);
       const randomNumbers = getRandomNumbers(allPokemonArr.length);
-
       setPokemonsForGame(randomNumbers.map((index) => allPokemonArr[index]));
+    }
+    if (isPlay === 2) {
+      setShowMessage(true);
+    }
+    if (isPlay === 1 || isPlay === 2) {
       timer = setTimeout(() => {
         setShowMessage(false);
+        if (isPlay === 2) {
+          setIsPlay(0);
+        }
       }, 2000);
     }
-
+    // if (isPlay === 2) {
+    //   setIsPlay(0);
+    // }
     return () => {
       clearTimeout(timer);
     };
   }, [allPokemonArr, isPlay, playAgain]);
+
+  useEffect(() => {
+    let gameResultTimer;
+    if (isStart && !showMessage && gameResult === null) {
+      gameResultTimer = setTimeout(() => {
+        const result = gameResultFunction(
+          pokemonsForGame[0],
+          pokemonsForGame[1]
+        );
+        setGameResult(result);
+      }, 2000);
+    }
+    return () => {
+      clearTimeout(gameResultTimer);
+    };
+  }, [isStart, showMessage, gameResult, pokemonsForGame]);
 
   const handlePlayChoiceClick = (e) => {
     const { name } = e.target;
@@ -46,14 +71,14 @@ const HomePage = () => {
   const handleStartBtn = () => {
     setIsStart(true);
 
-    const result = gameResultFunction(pokemonsForGame[0], pokemonsForGame[1]);
+    // const result = gameResultFunction(pokemonsForGame[0], pokemonsForGame[1]);
 
-    setGameResult(result);
+    // setGameResult(result);
   };
   const handlePlayAgainBtn = () => {
-    console.log(playAgain);
     setIsStart(false);
     setPlayAgain((prev) => !prev);
+    setGameResult(null);
   };
   return (
     <div className={styles.pageInnWrp}>
@@ -65,7 +90,7 @@ const HomePage = () => {
         />
       </div>
 
-      {isPlay === 0 && (
+      {isPlay !== 1 && !showMessage && (
         <>
           <p>Hi, my name is Pikachu</p>
           <p>Do you want to play?</p>
@@ -78,7 +103,7 @@ const HomePage = () => {
         </>
       )}
 
-      {isPlay === 2 && (
+      {isPlay === 2 && showMessage && (
         <div>
           <p>No Problem, I will wait for you</p>
         </div>
