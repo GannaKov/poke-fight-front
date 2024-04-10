@@ -13,23 +13,25 @@ const SinglePokemonPage = () => {
   return (
     <div className={styles.pageInnWrp}>
       <GoBack state={backLinkHref} />
-      <DropDown id={singlePokemon._id} />
-      <img
-        src={singlePokemon.img}
-        alt={singlePokemon.name.english}
-        className={styles.pokemonImg}
-      />
-      <div className={styles.oneChunkWrp}>
-        <ChunkObj obj={singlePokemon} typeInfo="name" />
-      </div>
-
-      <div className={styles.oneChunkWrp}>
-        {" "}
-        <ChunkObj obj={singlePokemon} typeInfo="base" />
-      </div>
-
-      <div className={styles.oneChunkWrp}>
-        <ChunkArr arr={singlePokemon} typeInfo="type" />
+      <div className={styles.sectionWrp}>
+        <DropDown id={singlePokemon._id} />
+        <div className={styles.contentWrp}>
+          <img
+            src={singlePokemon.img}
+            alt={singlePokemon.name.english}
+            className={styles.pokemonImg}
+          />
+          <div className={styles.oneChunkWrp}>
+            <ChunkObj obj={singlePokemon} typeInfo="name" />
+          </div>
+          <div className={styles.oneChunkWrp}>
+            {" "}
+            <ChunkObj obj={singlePokemon} typeInfo="base" />
+          </div>
+          <div className={styles.oneChunkWrp}>
+            <ChunkArr arr={singlePokemon} typeInfo="type" />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useNavigate, useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 
 import ChunkObj from "../../components/ChunkInfo/ChunkObj";
 import ChunkArr from "../../components/ChunkInfo/ChunkArr";

@@ -1,6 +1,6 @@
 .goBackBtn {
   background-color: white;
-  border: 1px solid green;
+  border: 1px solid rgb(52, 165, 52);
   outline: 1px solid transparent;
   border-radius: 3px;
   color: green;
@@ -11,7 +11,7 @@
 }
 
 .goBackBtn:is(:hover, :focus) {
-  background-color: green;
+  background-color: rgb(52, 165, 52);
   color: white;
 }
 .goBackLink {
