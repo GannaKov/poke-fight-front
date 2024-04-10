@@ -7,8 +7,8 @@ const instance = axios.create({ baseURL: BASEURL });
 
 export const getAllGamesScoreLoder = async () => {
   const { data } = await instance.get("/game");
-  console.log(data);
-  return data;
+
+  return data.data;
 };
 
 export const postBattleStatistics = async (values) => {

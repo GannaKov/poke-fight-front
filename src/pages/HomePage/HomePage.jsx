@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import { getRandomNumbers } from "../../services/helpers";
 import { gameResultFunction } from "../../services/helpers";
@@ -9,8 +10,9 @@ import styles from "./HomePage.module.css";
 const HomePage = () => {
   const allPokemonArr = useLoaderData();
 
-  const [isPlay, setIsPlay] = useState(0);
+  const navigate = useNavigate();
 
+  const [isPlay, setIsPlay] = useState(0);
   const [pokemonsForGame, setPokemonsForGame] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
   const [isStart, setIsStart] = useState(false);
@@ -21,7 +23,6 @@ const HomePage = () => {
   useEffect(() => {
     let timer;
     if (isPlay === 1) {
-      console.log("in random");
       setShowMessage(true);
       const randomNumbers = getRandomNumbers(allPokemonArr.length);
       setPokemonsForGame(randomNumbers.map((index) => allPokemonArr[index]));
@@ -90,9 +91,9 @@ const HomePage = () => {
     setPokemonsForGame(null);
   };
   //------------------------------------------------------
-  // const handleStatusticsClick = () => {
-  //   console.log("statistics");
-  // };
+  const handleStatusticsClick = () => {
+    navigate("/game/leaderboard");
+  };
   //------------------------------------------------------
   return (
     <div className={styles.pageInnWrp}>
@@ -114,9 +115,11 @@ const HomePage = () => {
           <button type="button" name="later" onClick={handlePlayChoiceClick}>
             LATER
           </button>
-          <button type="button"> Statistics</button>
+          <button type="button" onClick={handleStatusticsClick}>
+            {" "}
+            Statistics
+          </button>
         </>
-        // onClick={handleStatusticsClick}
       )}
 
       {isPlay === 2 && showMessage && (
