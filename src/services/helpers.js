@@ -1,3 +1,5 @@
+import { postBattleStatistics } from "./requests";
+
 export function getRandomNumbers(max) {
   const numbers = [];
 
@@ -58,6 +60,18 @@ export function gameResultFunction(pokFirst, pokSecond) {
   }
   const winner = scoreFirst > scoreSecond ? 0 : 1;
   const result = { scoreFirst, scoreSecond, winner };
-
+  ////----
+  const winnerUserOrPikachu = winner === 0 ? "user" : "Pikachu";
+  const pokemonWinner = winner === 0 ? pokFirst._id : pokSecond._id;
+  const resultBattle = {
+    participents: {
+      pok1: { name: pokFirst.name.english, id: pokFirst._id },
+      pok2: { name: pokSecond.name.english, id: pokSecond._id },
+    },
+    winner: winnerUserOrPikachu,
+    pokWinner: { id: pokemonWinner },
+    score: [scoreFirst, scoreSecond],
+  };
+  postBattleStatistics(resultBattle);
   return result;
 }

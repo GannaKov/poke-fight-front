@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLoaderData, Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { getRandomNumbers } from "../../services/helpers";
 import { gameResultFunction } from "../../services/helpers";
+import PacmanLoader from "react-spinners/PacmanLoader";
+import RotateLoader from "react-spinners/RotateLoader";
+
 import styles from "./HomePage.module.css";
 const HomePage = () => {
   const allPokemonArr = useLoaderData();
@@ -14,9 +17,11 @@ const HomePage = () => {
   const [gameResult, setGameResult] = useState(null);
   const [playAgain, setPlayAgain] = useState(false);
 
+  //-------------------------------------
   useEffect(() => {
     let timer;
     if (isPlay === 1) {
+      console.log("in random");
       setShowMessage(true);
       const randomNumbers = getRandomNumbers(allPokemonArr.length);
       setPokemonsForGame(randomNumbers.map((index) => allPokemonArr[index]));
@@ -30,16 +35,14 @@ const HomePage = () => {
         if (isPlay === 2) {
           setIsPlay(0);
         }
-      }, 2000);
+      }, 3000);
     }
-    // if (isPlay === 2) {
-    //   setIsPlay(0);
-    // }
+
     return () => {
       clearTimeout(timer);
     };
   }, [allPokemonArr, isPlay, playAgain]);
-
+  //---------------------------------------------------------
   useEffect(() => {
     let gameResultTimer;
     if (isStart && !showMessage && gameResult === null) {
@@ -55,7 +58,7 @@ const HomePage = () => {
       clearTimeout(gameResultTimer);
     };
   }, [isStart, showMessage, gameResult, pokemonsForGame]);
-
+  //--------------------------------------------------------------
   const handlePlayChoiceClick = (e) => {
     const { name } = e.target;
 
@@ -63,23 +66,34 @@ const HomePage = () => {
       setIsPlay(2);
     } else {
       setIsPlay(1);
-      // const randomNumbers = getRandomNumbers(allPokemonArr.length);
-
-      // setPokemonsForGame(randomNumbers.map((index) => allPokemonArr[index]));
     }
   };
+  //-------------------------------------------------------------------
   const handleStartBtn = () => {
     setIsStart(true);
-
-    // const result = gameResultFunction(pokemonsForGame[0], pokemonsForGame[1]);
-
-    // setGameResult(result);
   };
+  //-------------------------------------------------------------------
   const handlePlayAgainBtn = () => {
+    // setIsStart(false);
+    // setPlayAgain(true);
+    // setGameResult(null);
     setIsStart(false);
     setPlayAgain((prev) => !prev);
     setGameResult(null);
   };
+  //------------------------------------------------------------
+  const handleNoPlayBtn = () => {
+    // setPlayAgain(false);
+    setIsStart(false);
+    setIsPlay(0);
+    setGameResult(null);
+    setPokemonsForGame(null);
+  };
+  //------------------------------------------------------
+  // const handleStatusticsClick = () => {
+  //   console.log("statistics");
+  // };
+  //------------------------------------------------------
   return (
     <div className={styles.pageInnWrp}>
       <div>
@@ -100,7 +114,9 @@ const HomePage = () => {
           <button type="button" name="later" onClick={handlePlayChoiceClick}>
             LATER
           </button>
+          <button type="button"> Statistics</button>
         </>
+        // onClick={handleStatusticsClick}
       )}
 
       {isPlay === 2 && showMessage && (
@@ -111,6 +127,7 @@ const HomePage = () => {
       {isPlay === 1 && showMessage && (
         <div>
           <p>Wait for your pokemon</p>
+          <PacmanLoader color="rgb(10, 233, 51)" />
         </div>
       )}
       {pokemonsForGame && !showMessage && !isStart && (
@@ -176,7 +193,10 @@ const HomePage = () => {
           </div>
           <div>
             {!gameResult ? (
-              <p>Wait, they are fighting ...</p>
+              <>
+                <p>Wait, they are fighting ...</p>
+                <RotateLoader color="rgb(10, 233, 51)" />
+              </>
             ) : (
               <div>
                 <p>
@@ -191,6 +211,9 @@ const HomePage = () => {
                 </p>
                 <button type="button" onClick={handlePlayAgainBtn}>
                   Play Again
+                </button>
+                <button type="button" onClick={handleNoPlayBtn}>
+                  No
                 </button>
               </div>
             )}

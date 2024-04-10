@@ -1,0 +1,9 @@
+{
+  "participents": {
+    "pok1": { "name": "2", "id": "661427ae0780c2cf19bee9e0" },
+    "pok2": { "name": "kukuku", "id": "661427c40780c2cf19bee9e1" }
+  },
+  "winner": "user",
+  "pokWinner": { "id": "661427ae0780c2cf19bee9e0" },
+  "score": [4, 0]
+}

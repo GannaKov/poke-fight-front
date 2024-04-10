@@ -8,11 +8,12 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import PokemonInfoPage from "./pages/PokemonInfoPage/PokemonInfoPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import HomePage from "./pages/HomePage/HomePage";
-
+import AllGamesScorePage from "./pages/AllGamesScorePage/AllGamesScorePage";
 import {
   getAllPokemonsLoder,
   getPokemonInfoByTypeLoader,
   getSinglePokemonLoader,
+  getAllGamesScoreLoder,
 } from "./services/requests";
 
 const router = createBrowserRouter([
@@ -50,6 +51,19 @@ const router = createBrowserRouter([
                 path: "/pokemon/:id/:info",
                 element: <PokemonInfoPage />,
                 loader: getPokemonInfoByTypeLoader,
+              },
+            ],
+          },
+          {
+            path: "/game/leaderboard",
+
+            // Component: UsersPage,
+
+            children: [
+              {
+                index: true,
+                element: <AllGamesScorePage />,
+                loader: getAllGamesScoreLoder,
               },
             ],
           },

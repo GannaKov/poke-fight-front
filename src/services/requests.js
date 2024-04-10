@@ -5,6 +5,18 @@ const BASEURL = "http://localhost:3000";
 
 const instance = axios.create({ baseURL: BASEURL });
 
+export const getAllGamesScoreLoder = async () => {
+  const { data } = await instance.get("/game");
+  console.log(data);
+  return data;
+};
+
+export const postBattleStatistics = async (values) => {
+  const { data } = await instance.post(`/game/save`, values);
+
+  return data;
+};
+
 export const getAllPokemonsLoder = async () => {
   const { data } = await instance.get("/pokemon");
 
