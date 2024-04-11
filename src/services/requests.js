@@ -2,7 +2,7 @@ import axios from "axios";
 
 //const BASEURL = "http://localhost:3000";
 const BASEURL = import.meta.env.VITE_BASE_URL;
-//const BASEURL = "https://poke-fight.vercel.app";
+
 
 const instance = axios.create({ baseURL: BASEURL });
 

@@ -1,21 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import { getRandomNumbers } from "../../services/helpers";
 import { gameResultFunction } from "../../services/helpers";
-import PacmanLoader from "react-spinners/PacmanLoader";
-import RotateLoader from "react-spinners/RotateLoader";
-import { FaArrowLeft } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa";
-import { FaArrowUp } from "react-icons/fa";
-import { FaArrowDown } from "react-icons/fa";
 import StartGamePart from "../../components/StartGamePart/StartGamePart";
 
 import styles from "./HomePage.module.css";
+import GamePart from "../../components/GamePart/GamePart";
 const HomePage = () => {
   const allPokemonArr = useLoaderData();
-
-  const navigate = useNavigate();
 
   const [isPlay, setIsPlay] = useState(0);
   const [pokemonsForGame, setPokemonsForGame] = useState(null);
@@ -80,9 +72,6 @@ const HomePage = () => {
   };
   //-------------------------------------------------------------------
   const handlePlayAgainBtn = () => {
-    // setIsStart(false);
-    // setPlayAgain(true);
-    // setGameResult(null);
     setIsStart(false);
     setPlayAgain((prev) => !prev);
     setGameResult(null);
@@ -94,10 +83,7 @@ const HomePage = () => {
     setGameResult(null);
     setPokemonsForGame(null);
   };
-  //------------------------------------------------------
-  // const handleStatusticsClick = () => {
-  //   navigate("/game/leaderboard");
-  // };
+
   //------------------------------------------------------
   return (
     <div className={styles.pageInnWrp}>
@@ -113,183 +99,15 @@ const HomePage = () => {
         showMessage={showMessage}
         handlePlayChoiceClick={handlePlayChoiceClick}
       />
-      {/* {isPlay !== 1 && !showMessage && (
-        <>
-          <p className={styles.startText}>
-            Hi, my name is <span className={styles.textAccent}>Pikachu</span>!
-          </p>
-          <p className={styles.startText}>Do you want to play?</p>
-          <div className={styles.startBtnWrp}>
-            <button
-              className={styles.startBtn}
-              type="button"
-              name="yes"
-              onClick={handlePlayChoiceClick}
-            >
-              YES
-            </button>
-            <button
-              className={styles.startBtn}
-              type="button"
-              name="later"
-              onClick={handlePlayChoiceClick}
-            >
-              LATER
-            </button>
-          </div>
-
-          <button
-            className={styles.statisticsBtn}
-            type="button"
-            onClick={handleStatusticsClick}
-          >
-            Statistics
-          </button>
-        </>
-      )}
-
-      {isPlay === 2 && showMessage && (
-        <div>
-          <p className={styles.startText}>No Problem, I will wait for you...</p>
-        </div>
-      )}
-      {isPlay === 1 && showMessage && (
-        <div className={styles.gameStartWrp}>
-          <p className={styles.startText}>Wait for your pokemon...</p>
-          <PacmanLoader color="rgb(10, 233, 51)" />
-        </div>
-      )} */}
-      {pokemonsForGame && !showMessage && !isStart && (
-        <div>
-          <div className={styles.gameWrp}>
-            <div className={styles.pokemonImgWrp}>
-              <img
-                className={styles.imgPokemonInGame}
-                src="https://fakeimg.pl/100x100/ccf20c/0ce316?text=Pokemon"
-                alt="Polemon hidden"
-              />
-            </div>
-            <div className={styles.gameBlockMiddle}>
-              <div>
-                <p className={styles.startText}>
-                  <FaArrowLeft className={styles.iconHorizont} />
-                  <FaArrowUp className={styles.iconVertical} />
-                  &nbsp;Your Pokemon
-                </p>
-                <p className={styles.startText}>
-                  My Pokemon&nbsp;
-                  <FaArrowRight className={styles.iconHorizont} />
-                  <FaArrowDown className={styles.iconVertical} />
-                </p>
-              </div>
-            </div>
-            <div className={styles.pokemonImgWrp}>
-              <img
-                className={styles.imgPokemonInGame}
-                src="https://fakeimg.pl/100x100/ccf20c/0ce316?text=Pokemon"
-                alt="Polemon hidden"
-              />
-            </div>
-          </div>
-          <button
-            className={styles.startBtn}
-            type="button"
-            onClick={handleStartBtn}
-          >
-            Start
-          </button>
-        </div>
-      )}
-
-      {pokemonsForGame && !showMessage && isStart && (
-        <div>
-          <div className={styles.gameWrp}>
-            <div className={styles.pokemonImgWrp}>
-              <img
-                className={styles.imgPokemonInGame}
-                src={pokemonsForGame[0].img}
-                alt={pokemonsForGame[0].name.english}
-              />
-            </div>
-            <div className={styles.gameBlockMiddle}>
-              <div>
-                <p className={styles.startText}>
-                  <FaArrowLeft className={styles.iconHorizont} />
-                  <FaArrowUp className={styles.iconVertical} />
-                  &nbsp;Your Pokemon&nbsp;
-                  {pokemonsForGame[0].name.english}
-                </p>
-                <p className={styles.startText}>
-                  My Pokemon&nbsp;
-                  {pokemonsForGame[1].name.english}
-                  &nbsp;
-                  <FaArrowRight className={styles.iconHorizont} />
-                  <FaArrowDown className={styles.iconVertical} />
-                </p>
-              </div>
-            </div>
-            <div className={styles.pokemonImgWrp}>
-              <img
-                className={styles.imgPokemonInGame}
-                src={pokemonsForGame[1].img}
-                alt={pokemonsForGame[1].name.english}
-              />
-            </div>
-          </div>
-          <div>
-            {!gameResult ? (
-              <div className={styles.gameStartWrp}>
-                <p className={styles.startText}>Wait, they are fighting ...</p>
-                <RotateLoader color="rgb(10, 233, 51)" />
-              </div>
-            ) : (
-              <div>
-                <p className={styles.startText}>
-                  <span className={styles.textAccent}>Winner:</span>&nbsp;
-                  {pokemonsForGame[gameResult.winner].name.english}
-                </p>
-                {/* <p className={styles.startText}> */}
-
-                {/* </p> */}
-                <div className={styles.scoreTextWrp}>
-                  <span className={styles.textAccent}>Score:</span>
-                  <span className={styles.startText}>
-                    &nbsp;Pokemon&nbsp;{pokemonsForGame[0].name.english}:&nbsp;
-                    <span className={styles.textAccent}>
-                      {gameResult.scoreFirst}
-                    </span>
-                    &nbsp;:
-                  </span>
-                  <span className={styles.startText}>
-                    &nbsp;Pokemon&nbsp;
-                    {pokemonsForGame[1].name.english}:&nbsp;
-                    <span className={styles.textAccent}>
-                      {gameResult.scoreSecond}
-                    </span>
-                  </span>
-                </div>
-
-                <div className={styles.playAgainBtnWrp}>
-                  <button
-                    className={styles.gameAgainBtn}
-                    type="button"
-                    onClick={handlePlayAgainBtn}
-                  >
-                    Play Again
-                  </button>
-                  <button
-                    className={styles.gameAgainBtn}
-                    type="button"
-                    onClick={handleNoPlayBtn}
-                  >
-                    No
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      <GamePart
+        pokemonsForGame={pokemonsForGame}
+        isStart={isStart}
+        showMessage={showMessage}
+        handleStartBtn={handleStartBtn}
+        gameResult={gameResult}
+        handlePlayAgainBtn={handlePlayAgainBtn}
+        handleNoPlayBtn={handleNoPlayBtn}
+      />
     </div>
   );
 };

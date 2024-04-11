@@ -34,7 +34,7 @@ const router = createBrowserRouter([
           {
             path: "/pokemon",
 
-            // Component: UsersPage,
+         
 
             children: [
               {
@@ -57,8 +57,7 @@ const router = createBrowserRouter([
           {
             path: "/game/leaderboard",
 
-            // Component: UsersPage,
-
+       
             children: [
               {
                 index: true,
@@ -67,7 +66,7 @@ const router = createBrowserRouter([
               },
             ],
           },
-          // { path: "/contact-form", element: <ContactFormPage /> },
+    
         ],
       },
     ],

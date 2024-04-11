@@ -30,9 +30,7 @@
     flex-basis: calc((100% - 2rem) / 3);
   }
 }
-/* .listItem:not(:last-child) {
-  margin-bottom: 2rem;
-} */
+
 .listLink {
   color: rgb(26, 23, 23);
 }

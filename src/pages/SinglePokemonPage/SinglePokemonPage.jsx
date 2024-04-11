@@ -25,7 +25,6 @@ const SinglePokemonPage = () => {
             <ChunkObj obj={singlePokemon} typeInfo="name" />
           </div>
           <div className={styles.oneChunkWrp}>
-            {" "}
             <ChunkObj obj={singlePokemon} typeInfo="base" />
           </div>
           <div className={styles.oneChunkWrp}>

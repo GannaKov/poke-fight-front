@@ -2,7 +2,7 @@
 import styles from "./Chunk.module.css";
 
 const ChunkObj = ({ obj, typeInfo }) => {
-  // const category = Object.keys(obj)[0];
+ 
   const entriesArr = Object.entries(obj[typeInfo]);
 
   return (

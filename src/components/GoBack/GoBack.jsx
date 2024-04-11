@@ -14,4 +14,3 @@ const GoBack = ({ state }) => {
 };
 
 export default GoBack;
-//<Link to={ } state={ }>&larr;&nbsp;Go Back</Link>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import { Dropdown } from "@mui/base/Dropdown";
 import { Menu } from "@mui/base/Menu";
@@ -16,7 +17,6 @@ const DropDown = ({ id }) => {
     <Dropdown>
       <MenuButton className={styles.ddMenuBtn}>Choose type Info</MenuButton>
       <Menu className={styles.ddMenu}>
-        {/* slots={{ listbox: Listbox }} */}
         <MenuItem
           className={styles.ddMenuItem}
           onClick={createHandleMenuClick("Name")}
