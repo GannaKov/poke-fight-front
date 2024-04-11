@@ -36,7 +36,7 @@ const HomePage = () => {
         if (isPlay === 2) {
           setIsPlay(0);
         }
-      }, 3000);
+      }, 2000);
     }
 
     return () => {
@@ -97,7 +97,7 @@ const HomePage = () => {
   //------------------------------------------------------
   return (
     <div className={styles.pageInnWrp}>
-      <div>
+      <div className={styles.pikachuWrp}>
         <img
           className={styles.pikachuImg}
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
@@ -107,16 +107,34 @@ const HomePage = () => {
 
       {isPlay !== 1 && !showMessage && (
         <>
-          <p>Hi, my name is Pikachu</p>
-          <p>Do you want to play?</p>
-          <button type="button" name="yes" onClick={handlePlayChoiceClick}>
-            YES
-          </button>
-          <button type="button" name="later" onClick={handlePlayChoiceClick}>
-            LATER
-          </button>
-          <button type="button" onClick={handleStatusticsClick}>
-            {" "}
+          <p className={styles.startText}>
+            Hi, my name is <span className={styles.textAccent}>Pikachu</span>!
+          </p>
+          <p className={styles.startText}>Do you want to play?</p>
+          <div className={styles.startBtnWrp}>
+            <button
+              className={styles.startBtn}
+              type="button"
+              name="yes"
+              onClick={handlePlayChoiceClick}
+            >
+              YES
+            </button>
+            <button
+              className={styles.startBtn}
+              type="button"
+              name="later"
+              onClick={handlePlayChoiceClick}
+            >
+              LATER
+            </button>
+          </div>
+
+          <button
+            className={styles.startBtn}
+            type="button"
+            onClick={handleStatusticsClick}
+          >
             Statistics
           </button>
         </>
@@ -124,12 +142,12 @@ const HomePage = () => {
 
       {isPlay === 2 && showMessage && (
         <div>
-          <p>No Problem, I will wait for you</p>
+          <p className={styles.startText}>No Problem, I will wait for you...</p>
         </div>
       )}
       {isPlay === 1 && showMessage && (
-        <div>
-          <p>Wait for your pokemon</p>
+        <div className={styles.gameStartWrp}>
+          <p className={styles.startText}>Wait for your pokemon...</p>
           <PacmanLoader color="rgb(10, 233, 51)" />
         </div>
       )}
@@ -145,8 +163,8 @@ const HomePage = () => {
             </div>
             <div className={styles.gameBlockMiddle}>
               <div>
-                <p>&larr;You Pokemon</p>
-                <p>My Pokemon &rarr;</p>
+                <p className={styles.startText}>&larr;Your Pokemon</p>
+                <p className={styles.startText}>My Pokemon &rarr;</p>
               </div>
             </div>
             <div>
@@ -157,7 +175,11 @@ const HomePage = () => {
               />
             </div>
           </div>
-          <button type="button" onClick={handleStartBtn}>
+          <button
+            className={styles.startBtn}
+            type="button"
+            onClick={handleStartBtn}
+          >
             Start
           </button>
         </div>
@@ -175,11 +197,11 @@ const HomePage = () => {
             </div>
             <div className={styles.gameBlockMiddle}>
               <div>
-                <p>
-                  &larr;&nbsp;You Pokemon&nbsp;
+                <p className={styles.startText}>
+                  &larr;&nbsp;Your Pokemon&nbsp;
                   {pokemonsForGame[0].name.english}
                 </p>
-                <p>
+                <p className={styles.startText}>
                   My Pokemon&nbsp;
                   {pokemonsForGame[1].name.english}
                   &nbsp;&rarr;
@@ -196,28 +218,46 @@ const HomePage = () => {
           </div>
           <div>
             {!gameResult ? (
-              <>
-                <p>Wait, they are fighting ...</p>
+              <div className={styles.gameStartWrp}>
+                <p className={styles.startText}>Wait, they are fighting ...</p>
                 <RotateLoader color="rgb(10, 233, 51)" />
-              </>
+              </div>
             ) : (
               <div>
-                <p>
-                  Winner:&nbsp;{pokemonsForGame[gameResult.winner].name.english}
+                <p className={styles.startText}>
+                  <span className={styles.textAccent}>Winner:</span>&nbsp;
+                  {pokemonsForGame[gameResult.winner].name.english}
                 </p>
-                <p>Score:</p>
-                <p>
-                  Pokemon&nbsp;{pokemonsForGame[0].name.english}:&nbsp;
-                  {gameResult.scoreFirst}&nbsp;:&nbsp;Pokemon&nbsp;
+                {/* <p className={styles.startText}> */}
+                <span className={styles.textAccent}>Score:</span>
+                {/* </p> */}
+                <span className={styles.startText}>
+                  &nbsp; Pokemon&nbsp;{pokemonsForGame[0].name.english}:&nbsp;
+                  <span className={styles.textAccent}>
+                    {gameResult.scoreFirst}
+                  </span>
+                  &nbsp;:&nbsp;Pokemon&nbsp;
                   {pokemonsForGame[1].name.english}:&nbsp;
-                  {gameResult.scoreSecond}
-                </p>
-                <button type="button" onClick={handlePlayAgainBtn}>
-                  Play Again
-                </button>
-                <button type="button" onClick={handleNoPlayBtn}>
-                  No
-                </button>
+                  <span className={styles.textAccent}>
+                    {gameResult.scoreSecond}
+                  </span>
+                </span>
+                <div className={styles.playAgainBtnWrp}>
+                  <button
+                    className={styles.gameAgainBtn}
+                    type="button"
+                    onClick={handlePlayAgainBtn}
+                  >
+                    Play Again
+                  </button>
+                  <button
+                    className={styles.gameAgainBtn}
+                    type="button"
+                    onClick={handleNoPlayBtn}
+                  >
+                    No
+                  </button>
+                </div>
               </div>
             )}
           </div>

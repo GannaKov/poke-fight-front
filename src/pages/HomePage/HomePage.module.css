@@ -4,11 +4,25 @@
   align-items: center;
   padding: 2rem 1rem;
 }
+.pikachuWrp {
+  margin-bottom: 2rem;
+}
 .pikachuImg {
   width: 100px;
 }
+.gameStartWrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .gameWrp {
   display: flex;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  padding: 2rem;
+  border: 1px solid rgba(128, 128, 128, 0.727);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 .gameBlockMiddle {
   display: flex;
@@ -20,4 +34,47 @@
 
 .imgPokemonInGame {
   width: 100px;
+}
+.startText {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.textAccent {
+  font-weight: 500;
+}
+.startBtnWrp {
+  padding-top: 1rem;
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+.startBtn {
+  width: 80px;
+  height: 32px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid gray;
+  outline: 1px solid transparent;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.startBtn:is(:hover, :focus) {
+  transform: scale(1.1);
+  background-color: rgb(160, 235, 143);
+}
+.playAgainBtnWrp {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.gameAgainBtn {
+  padding: 0.5rem;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid gray;
+  outline: 1px solid transparent;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gameAgainBtn:is(:hover, :focus) {
+  transform: scale(1.1);
+  background-color: rgb(160, 235, 143);
 }
