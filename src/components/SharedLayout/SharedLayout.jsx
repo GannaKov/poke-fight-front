@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
+import logo from "../../assets/images/logo.jpeg";
 
 import styles from "./SharedLayout.module.css";
 
@@ -7,7 +8,7 @@ const SharedLayout = () => {
     <div className={styles.wrapper}>
       <header className={styles.headerWrp}>
         <nav className={styles.headerNav}>
-          <p>Here logo</p>
+          <img className={styles.headerLogo} src={logo} alt="Logo" />
           <ul className={styles.navList}>
             <li className={styles.navItem}>
               <NavLink

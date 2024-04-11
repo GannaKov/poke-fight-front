@@ -1,6 +1,10 @@
 .wrapper {
   display: grid;
 }
+.headerLogo {
+  width: 200px;
+  border-radius: 30px;
+}
 .headerWrp {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -44,7 +48,6 @@
 .navList {
   display: flex;
   flex-direction: column;
-
 }
 @media screen and (min-width: 450px) {
   .navList {
@@ -58,18 +61,20 @@
   padding-bottom: 8px;
 }
 .headerNavLink {
+  font-family: "Boogaloo";
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   color: black;
+  letter-spacing: 1.5px;
 }
 .headerNavLink:is(:hover, :focus) {
   text-decoration: underline;
   text-decoration-thickness: 0.2rem;
 }
 .headerNavLink.active {
-  font-size: 1.3rem;
-  color: rgb(227, 87, 180);
+  font-size: 2rem;
+  color: rgb(55, 184, 26);
   text-decoration: underline;
   text-decoration-thickness: 0.1rem;
 }
