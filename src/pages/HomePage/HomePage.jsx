@@ -135,7 +135,7 @@ const HomePage = () => {
           </div>
 
           <button
-            className={styles.startBtn}
+            className={styles.statisticsBtn}
             type="button"
             onClick={handleStatusticsClick}
           >
