@@ -1,0 +1,43 @@
+.startText {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.startBtnWrp {
+  padding-top: 1rem;
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+.startBtn {
+  width: 80px;
+  height: 32px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid gray;
+  outline: 1px solid transparent;
+  color: black;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.startBtn:is(:hover, :focus) {
+  transform: scale(1.1);
+  background-color: rgb(160, 235, 143);
+}
+.statisticsBtn {
+  width: 120px;
+  height: 32px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid gray;
+  outline: 1px solid transparent;
+  color: black;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.statisticsBtn:is(:hover, :focus) {
+  transform: scale(1.1);
+  background-color: rgb(160, 235, 143);
+}
+.gameStartWrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

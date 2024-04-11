@@ -9,6 +9,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
+import StartGamePart from "../../components/StartGamePart/StartGamePart";
 
 import styles from "./HomePage.module.css";
 const HomePage = () => {
@@ -88,16 +89,15 @@ const HomePage = () => {
   };
   //------------------------------------------------------------
   const handleNoPlayBtn = () => {
-    // setPlayAgain(false);
     setIsStart(false);
     setIsPlay(0);
     setGameResult(null);
     setPokemonsForGame(null);
   };
   //------------------------------------------------------
-  const handleStatusticsClick = () => {
-    navigate("/game/leaderboard");
-  };
+  // const handleStatusticsClick = () => {
+  //   navigate("/game/leaderboard");
+  // };
   //------------------------------------------------------
   return (
     <div className={styles.pageInnWrp}>
@@ -108,8 +108,12 @@ const HomePage = () => {
           alt="Pikachu"
         />
       </div>
-
-      {isPlay !== 1 && !showMessage && (
+      <StartGamePart
+        isPlay={isPlay}
+        showMessage={showMessage}
+        handlePlayChoiceClick={handlePlayChoiceClick}
+      />
+      {/* {isPlay !== 1 && !showMessage && (
         <>
           <p className={styles.startText}>
             Hi, my name is <span className={styles.textAccent}>Pikachu</span>!
@@ -154,7 +158,7 @@ const HomePage = () => {
           <p className={styles.startText}>Wait for your pokemon...</p>
           <PacmanLoader color="rgb(10, 233, 51)" />
         </div>
-      )}
+      )} */}
       {pokemonsForGame && !showMessage && !isStart && (
         <div>
           <div className={styles.gameWrp}>
