@@ -154,7 +154,7 @@ const HomePage = () => {
       {pokemonsForGame && !showMessage && !isStart && (
         <div>
           <div className={styles.gameWrp}>
-            <div>
+            <div className={styles.pokemonImgWrp}>
               <img
                 className={styles.imgPokemonInGame}
                 src="https://fakeimg.pl/100x100/ccf20c/0ce316?text=Pokemon"
@@ -167,7 +167,7 @@ const HomePage = () => {
                 <p className={styles.startText}>My Pokemon &rarr;</p>
               </div>
             </div>
-            <div>
+            <div className={styles.pokemonImgWrp}>
               <img
                 className={styles.imgPokemonInGame}
                 src="https://fakeimg.pl/100x100/ccf20c/0ce316?text=Pokemon"
@@ -188,7 +188,7 @@ const HomePage = () => {
       {pokemonsForGame && !showMessage && isStart && (
         <div>
           <div className={styles.gameWrp}>
-            <div>
+            <div className={styles.pokemonImgWrp}>
               <img
                 className={styles.imgPokemonInGame}
                 src={pokemonsForGame[0].img}
@@ -208,7 +208,7 @@ const HomePage = () => {
                 </p>
               </div>
             </div>
-            <div>
+            <div className={styles.pokemonImgWrp}>
               <img
                 className={styles.imgPokemonInGame}
                 src={pokemonsForGame[1].img}
@@ -229,19 +229,26 @@ const HomePage = () => {
                   {pokemonsForGame[gameResult.winner].name.english}
                 </p>
                 {/* <p className={styles.startText}> */}
-                <span className={styles.textAccent}>Score:</span>
+
                 {/* </p> */}
-                <span className={styles.startText}>
-                  &nbsp; Pokemon&nbsp;{pokemonsForGame[0].name.english}:&nbsp;
-                  <span className={styles.textAccent}>
-                    {gameResult.scoreFirst}
+                <div className={styles.scoreTextWrp}>
+                  <span className={styles.textAccent}>Score:</span>
+                  <span className={styles.startText}>
+                    &nbsp;Pokemon&nbsp;{pokemonsForGame[0].name.english}:&nbsp;
+                    <span className={styles.textAccent}>
+                      {gameResult.scoreFirst}
+                    </span>
+                    &nbsp;:
                   </span>
-                  &nbsp;:&nbsp;Pokemon&nbsp;
-                  {pokemonsForGame[1].name.english}:&nbsp;
-                  <span className={styles.textAccent}>
-                    {gameResult.scoreSecond}
+                  <span className={styles.startText}>
+                    &nbsp;Pokemon&nbsp;
+                    {pokemonsForGame[1].name.english}:&nbsp;
+                    <span className={styles.textAccent}>
+                      {gameResult.scoreSecond}
+                    </span>
                   </span>
-                </span>
+                </div>
+
                 <div className={styles.playAgainBtnWrp}>
                   <button
                     className={styles.gameAgainBtn}
