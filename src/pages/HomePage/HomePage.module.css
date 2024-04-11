@@ -81,6 +81,16 @@
   transform: scale(1.1);
   background-color: rgb(160, 235, 143);
 }
+@media screen and (max-width: 600px) {
+  .iconHorizont {
+    display: none;
+  }
+}
+@media screen and (min-width: 600px) {
+  .iconVertical {
+    display: none;
+  }
+}
 .scoreTextWrp {
   display: flex;
   flex-direction: column;

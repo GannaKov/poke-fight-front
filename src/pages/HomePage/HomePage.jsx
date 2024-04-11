@@ -5,6 +5,10 @@ import { getRandomNumbers } from "../../services/helpers";
 import { gameResultFunction } from "../../services/helpers";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import RotateLoader from "react-spinners/RotateLoader";
+import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
+import { FaArrowUp } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa";
 
 import styles from "./HomePage.module.css";
 const HomePage = () => {
@@ -163,8 +167,16 @@ const HomePage = () => {
             </div>
             <div className={styles.gameBlockMiddle}>
               <div>
-                <p className={styles.startText}>&larr;Your Pokemon</p>
-                <p className={styles.startText}>My Pokemon &rarr;</p>
+                <p className={styles.startText}>
+                  <FaArrowLeft className={styles.iconHorizont} />
+                  <FaArrowUp className={styles.iconVertical} />
+                  &nbsp;Your Pokemon
+                </p>
+                <p className={styles.startText}>
+                  My Pokemon&nbsp;
+                  <FaArrowRight className={styles.iconHorizont} />
+                  <FaArrowDown className={styles.iconVertical} />
+                </p>
               </div>
             </div>
             <div className={styles.pokemonImgWrp}>
@@ -198,13 +210,17 @@ const HomePage = () => {
             <div className={styles.gameBlockMiddle}>
               <div>
                 <p className={styles.startText}>
-                  &larr;&nbsp;Your Pokemon&nbsp;
+                  <FaArrowLeft className={styles.iconHorizont} />
+                  <FaArrowUp className={styles.iconVertical} />
+                  &nbsp;Your Pokemon&nbsp;
                   {pokemonsForGame[0].name.english}
                 </p>
                 <p className={styles.startText}>
                   My Pokemon&nbsp;
                   {pokemonsForGame[1].name.english}
-                  &nbsp;&rarr;
+                  &nbsp;
+                  <FaArrowRight className={styles.iconHorizont} />
+                  <FaArrowDown className={styles.iconVertical} />
                 </p>
               </div>
             </div>
