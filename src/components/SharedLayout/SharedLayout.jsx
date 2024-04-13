@@ -19,7 +19,7 @@ const SharedLayout = () => {
                     : `${styles.headerNavLink}`
                 }
               >
-                Home
+                Game
               </NavLink>
             </li>
             <li className={styles.navItem}>
