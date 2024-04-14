@@ -34,8 +34,6 @@ const router = createBrowserRouter([
           {
             path: "/pokemon",
 
-         
-
             children: [
               {
                 index: true,
@@ -57,7 +55,6 @@ const router = createBrowserRouter([
           {
             path: "/game/leaderboard",
 
-       
             children: [
               {
                 index: true,
@@ -66,7 +63,6 @@ const router = createBrowserRouter([
               },
             ],
           },
-    
         ],
       },
     ],

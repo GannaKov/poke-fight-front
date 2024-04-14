@@ -1,0 +1,17 @@
+.pageWrp {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.errorTitle {
+  margin-bottom: 2rem;
+}
+.errorText {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+.pikachuImg {
+  width: 100px;
+}
